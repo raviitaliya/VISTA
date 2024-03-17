@@ -28,7 +28,7 @@ function HomePage() {
       <div className="flex justify-center pt-10">
         <p>Trending searches</p>
       </div>
-      
+      efe
     </div>
   );
 }
