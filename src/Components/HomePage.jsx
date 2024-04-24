@@ -2,7 +2,6 @@
 import React from "react";
 import bg from "../assets/bg.png";
 import Button from "./Button";
-import { IoSearchSharp } from "react-icons/io5";
 
 function HomePage() {
   return (
@@ -23,12 +22,13 @@ function HomePage() {
       <h1 className="text-white text-base font-normal">{`Millions of designers and agencies around the world showcase their portfolio work on Dribbble - the home to the world's best design and creative professionals.`}</h1>
       </div>
       <div className="flex justify-center pt-8">
-        <input className="w-[600px] h-[50px] rounded-3xl px-5 bg-slate-300" type="text" placeholder={"search..."}/> 
+        <input className="w-[600px] h-[50px] rounded-3xl px-5 bg-gray-200" type="text" placeholder={"search..."}/> 
       </div>
-      <div className="flex justify-center pt-10">
-        <p>Trending searches</p>
+      <div className="flex justify-center pt-12 items-center">
+        <p className="text-white mr-4">Trending searches</p>
+        <Button display="true"/>
       </div>
-      efe
+
     </div>
   );
 }
