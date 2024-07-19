@@ -5,8 +5,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontOpticalSizing: {
+        'auto': 'auto',
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.font-optical-sizing-auto': {
+          fontOpticalSizing: 'auto',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }
 
