@@ -30,7 +30,7 @@ const FristPage = () => {
           <h2 className="text-5xl">Explore inspiring designs</h2>
         </div>
 
-        <div className="h-full flex-wrap justify-center  flex gap-10">
+        <div className=" flex-wrap justify-center  flex gap-10">
           <Post img={"https://images.unsplash.com/photo-1719937206255-cc337bccfc7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8"}/>
           <Post img={"https://images.unsplash.com/photo-1721934081906-a92cdc010b75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D"}/>
           <Post img={"https://plus.unsplash.com/premium_photo-1722081393586-e3a0c12535b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D"}/>
