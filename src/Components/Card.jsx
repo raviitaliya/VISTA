@@ -1,5 +1,5 @@
-import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 function Card({ name, description, imageUrl }) {
   return (
     <div className="relative h-[380px] w-[280px] flex-shrink-0 rounded-3xl mx-2">

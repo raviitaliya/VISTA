@@ -46,12 +46,12 @@ const Slider = () => {
     controls.start({
       x: -width,
       transition: {
-        duration: 25,
+        duration: 50,
         ease: 'linear',
         repeat: Infinity,
       },
     });
-  }, [controls, width]);
+  }, [controls, width]) ;
 
   return (
     <div className="relative w-full overflow-hidden">
