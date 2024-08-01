@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 import Card from './Card';
 
@@ -46,12 +46,12 @@ const Slider = () => {
     controls.start({
       x: -width,
       transition: {
-        duration: 50,
+        duration: 25,
         ease: 'linear',
         repeat: Infinity,
       },
     });
-  }, [controls, width]) ;
+  }, [controls, width]);
 
   return (
     <div className="relative w-full overflow-hidden">
