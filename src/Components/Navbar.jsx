@@ -26,9 +26,7 @@ function Navbar() {
         <button className="px-4 py-2 bg-gray-100 rounded-md flex items-center justify-center ml-8">
           Sign up
         </button>
-        <button className="px-4 py-2 bg-black text-white rounded-md flex items-center justify-center ml-4">
-          Hire Creatives
-        </button>
+      
       </div>
     </nav>
   );

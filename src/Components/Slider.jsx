@@ -46,7 +46,7 @@ const Slider = () => {
     controls.start({
       x: -width,
       transition: {
-        duration: 25,
+        duration: 60,
         ease: 'linear',
         repeat: Infinity,
       },
