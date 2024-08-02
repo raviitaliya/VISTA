@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -20,13 +21,12 @@ function Navbar() {
         <h1 className="text-5xl">VISTA</h1>
       </div>
       <div className="flex items-center h-full p-5 text-base">
-        <a href="#" className="font-medium">
+        <Link to="/login" className="font-medium">
           Log in
-        </a>
-        <button className="px-4 py-2 bg-gray-100 rounded-md flex items-center justify-center ml-8">
+        </Link>
+        <Link to="/signup" className="px-5 py-2 bg-black text-white font-semibold rounded-md flex items-center justify-center ml-8">
           Sign up
-        </button>
-      
+        </Link>
       </div>
     </nav>
   );
