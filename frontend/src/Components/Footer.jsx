@@ -9,7 +9,7 @@ function Footer() {
   return (
     <div className="h-[250px] ">
       <div className="px-[16%] ">
-        <div className="py-10  flex items-center gap-20">
+        <div className="py-9 flex items-center gap-20">
           <div className="font-['Bodoni_Moda_SC',_serif] font-medium ">
             <h1 className="text-4xl">VISTA</h1>
           </div>
