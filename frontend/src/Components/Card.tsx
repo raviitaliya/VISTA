@@ -1,6 +1,11 @@
 
-// eslint-disable-next-line react/prop-types
-function Card({ name, description, imageUrl }) {
+interface CardProps {
+  name: string;
+  description: string;
+  imageUrl: string;
+}
+
+function Card({ name, description, imageUrl }: CardProps) {
   return (
     <div className="relative h-[380px] w-[280px] flex-shrink-0 rounded-3xl mx-2">
       <img
