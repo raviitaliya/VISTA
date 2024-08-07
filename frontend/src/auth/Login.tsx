@@ -26,9 +26,9 @@ const Login = () => {
             navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
-                toast.error(error.response.data.message || 'An error occurred during login');
+                toast.error(error.response.data.message || 'internal server error!');
             } else {
-                toast.error('An error occurred during login');
+                toast.error('internal server error!');
             }
             // Clear input fields on error
             setUsernameOrEmail('');
