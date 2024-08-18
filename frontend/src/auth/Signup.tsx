@@ -128,7 +128,6 @@ const Login: React.FC = () => {
 
   return (
     <div className="w-full h-screen flex gap-32">
-      <ToastContainer />
       <div className="w-[400px] h-full bg-black relative overflow-hidden">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
@@ -141,6 +140,8 @@ const Login: React.FC = () => {
         </video>
         <div className="absolute top-6 left-6 font-['Bodoni_Moda_SC',_serif] font-medium text-white">
           <h1 className="text-4xl">VISTA</h1>
+      <ToastContainer />
+
         </div>
       </div>
       <div className="flex-1 flex items-center">
