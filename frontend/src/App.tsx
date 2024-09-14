@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Layout from "./Layout"; // Add this import
 import Profile from "./pages/Profile";
+import UploadContant from "./pages/UploadContant";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem('token');
@@ -67,7 +68,15 @@ function App() {
             </ProtectedRoute>
           } 
         />
-
+        
+        <Route 
+          path="/editor" 
+          element={
+            <ProtectedRoute>
+              <UploadContant />
+            </ProtectedRoute>
+          } 
+        />
         
 
         <Route 
