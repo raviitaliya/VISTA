@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+
+  const navigate = useNavigate();
   return (
     <nav className="flex justify-between items-center w-full h-24">
       <div className="flex items-center h-full px-14 text-base font-medium gap-10 text-black">
@@ -21,12 +23,7 @@ function Navbar() {
         <h1 className="text-5xl">VISTA</h1>
       </div>
       <div className="flex items-center h-full p-5 text-base">
-        <Link to="/login" className="font-medium">
-          Log in
-        </Link>
-        <Link to="/signup" className="px-5 py-2 bg-black text-white font-semibold rounded-md flex items-center justify-center ml-8">
-          Sign up
-        </Link>
+       <div onClick={() => navigate("/profile")} className='rounded-full w-10 h-10 bg-black mr-2'></div>
       </div>
     </nav>
   );

@@ -1,12 +1,11 @@
-import Footer from "./Footer";
-import Slider from "./Slider";
-import Navbar from "./Navbar";
-import Post from "./Post"
+import Slider from "../Components/Slider";
+import Post from "../Components/Post"
+import { useNavigate } from "react-router-dom";
 
 const FristPage = () => {
+  const navigate = useNavigate();
   return (
-      <div className="h-screen w-full">
-      <Navbar />
+      <div className="h-full w-full">
         <div className="flex justify-center pt-32 pb-20 items-center">
           <div className="text-center">
             <h1 className="capitalize text-6xl font-normal">
@@ -17,7 +16,7 @@ const FristPage = () => {
               Get inspired by the work of millions of top-rated designers &
               agencies around the world.
             </p>
-            <button className=" bg-black text-white px-10 py-4 rounded-3xl">
+            <button onClick={() => navigate("/following")} className=" bg-black text-white px-10 py-4 rounded-3xl">
               Get started
             </button>
           </div>
@@ -45,7 +44,6 @@ const FristPage = () => {
           <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
 
         </div>
-      <Footer />
       </div>
   );
 };

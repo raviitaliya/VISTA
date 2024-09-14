@@ -88,14 +88,14 @@ const Login: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:4000/api/verify-otp", {
+      const response = await axios.post("http://localhost:4000/api/verify", {
         verificationToken,
         otp: otpValue,
       });
       if (response.status === 200) {
         toast.success(response.data.message);
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("/");
         }, 2000);
       }
     } catch (error) {

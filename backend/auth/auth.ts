@@ -43,6 +43,7 @@ const signup = async (req: Request, res: Response) => {
     });
 
     await newUser.save();
+    
 
     const verification: IVerification = new Verification({
       email,
@@ -69,11 +70,15 @@ const verifyOTP = async (req: Request, res: Response) => {
   try {
     const { verificationToken, otp } = req.body;
 
+    if (!verificationToken || !otp) {
+      return res.status(400).json({ message: "Verification token and OTP are required" });
+    }
+
     let decodedToken;
     try {
       decodedToken = jwt.verify(verificationToken, JWT_SECRET) as { username: string, email: string };
     } catch (error) {
-      return res.status(400).json({ message: "Invalid or expired verification token" ,error: (error instanceof Error) ? error.message : String(error) });
+      return res.status(400).json({ message: "Invalid or expired verification token" });
     }
 
     const verification = await Verification.findOne({ token: verificationToken });
@@ -114,7 +119,7 @@ const verifyOTP = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.error("OTP verification error:", error);
-    res.status(500).json({ message: "An error occurred during OTP verification", error: (error instanceof Error) ? error.message : String(error) });
+    res.status(500).json({ message: "An error occurred during OTP verification" });
   }
 };
 
