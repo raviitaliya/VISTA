@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import useUserStore from "../store/store";
 
 function Navbar() {
+
+  const { user } = useUserStore();
 
   const navigate = useNavigate();
   return (
@@ -23,7 +26,7 @@ function Navbar() {
         <h1 className="text-5xl">VISTA</h1>
       </div>
       <div className="flex items-center h-full p-5 text-base">
-       <div onClick={() => navigate("/profile")} className='rounded-full w-10 h-10 bg-black mr-2'></div>
+       <img onClick={() => navigate("/profile")} src={user?.avatar || "/image.png"} className='rounded-full w-10 h-10  mr-2' />
       </div>
     </nav>
   );

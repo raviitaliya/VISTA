@@ -1,6 +1,6 @@
 import { Heart,Eye } from "@phosphor-icons/react";
 
-const Post = ({img}) => {
+const Post = ({img,name}) => {
   return (
     <div className="w-[415px] h-[345px]">
       <div className="flex flex-col gap-2">
@@ -10,7 +10,7 @@ const Post = ({img}) => {
         <div className="flex justify-between items-center px-1">
           <div className="flex gap-2">
             <div className="h-6 w-6 rounded-full bg-black"></div>
-            <p>italiya ravi</p>
+            <p>{name}</p>
           </div>
           <div className="flex gap-2 ">
             <div className="flex gap-1 items-center">

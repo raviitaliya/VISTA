@@ -5,7 +5,18 @@ interface User {
   id: number;
   username: string;
   email: string;
+  avatar: string;
   // Add other user properties as needed
+}
+
+export interface ContentItem {
+  _id: string;
+  userId: string;
+  title: string;
+  description: string;
+  img: string[];
+  uploadDate: string;
+  __v: number;
 }
 
 interface UserStore {
@@ -14,18 +25,20 @@ interface UserStore {
   error: string | null;
   fetchUser: () => Promise<void>;
   updateUser: (userData: Partial<User>) => Promise<void>;
-  createContent: (contentData: any) => Promise<void>; // New function
+  createContent: (contentData: any) => Promise<void>;
+  contentItems: ContentItem[]; // New property to store content items
+  getContent: () => Promise<void>;
 }
 
 const useUserStore = create<UserStore>((set) => ({
   user: null,
   isLoading: false,
   error: null,
+  contentItems: [], // Initialize contentItems
   fetchUser: async () => {
     set({ isLoading: true });
     try {
       const response = await api.get('/profile'); // Adjust the API endpoint as needed
-      console.log(response.data);
       set({ user: response.data, isLoading: false, error: null });
     } catch (error) {
       set({ isLoading: false, error: 'Failed to fetch user data' });
@@ -43,12 +56,25 @@ const useUserStore = create<UserStore>((set) => ({
   createContent: async (contentData) => {
     set({ isLoading: true });
     try {
-      const response = await api.post('/content', contentData); // Adjust the API endpoint as needed
-      set({ isLoading: false, error: null });
-      return response.data; // Return the created content data
+      const response = await api.post('/upload', contentData);
+      set((state) => ({ 
+        isLoading: false, 
+        error: null, 
+        contentItems: [...state.contentItems, response.data] 
+      }));
     } catch (error) {
       set({ isLoading: false, error: 'Failed to create content' });
-      throw error; // Rethrow the error for handling in the component
+      throw error;
+    }
+  },
+  getContent: async () => {
+    set({ isLoading: true });
+    try {
+      const response = await api.get('/content');
+      console.log(response);
+      set({ contentItems: response.data, isLoading: false, error: null });
+    } catch (error) {
+      set({ isLoading: false, error: 'Failed to fetch content' });
     }
   },
 }));

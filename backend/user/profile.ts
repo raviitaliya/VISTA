@@ -6,7 +6,6 @@ import { RequestWithUser } from '../auth/authenticateToken'; // Import the custo
 const profile = async (req: RequestWithUser, res: Response): Promise<void> => {
     try {
         const userId = req.user?.userId; // Use the correct property name
-        console.log(userId);
 
         const user = await User.findById(userId);
         if (!user) {
@@ -43,6 +42,8 @@ const uploadContent = async (req: RequestWithUser, res: Response): Promise<void>
         const { title, description, img } = req.body;
 
         const upload = new Upload({ userId, title, description, img });
+
+        
         await upload.save();
 
         res.status(201).json(upload);
@@ -52,5 +53,20 @@ const uploadContent = async (req: RequestWithUser, res: Response): Promise<void>
     }
 }
 
-export { profile, updateProfile, uploadContent };
+const getContent = async (req: RequestWithUser, res: Response): Promise<void> => {
+    try {
+        const userId = req.user?.userId;
+        console.log(userId);
+
+        const uploads = await Upload.find({ userId });
+        
+        
+        res.json(uploads);
+    } catch (error) {
+        console.error('Error fetching user content:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+export { profile, updateProfile, uploadContent, getContent };
 

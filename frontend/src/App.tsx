@@ -16,6 +16,10 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+
+
+
+
 const AuthRoute = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem('token');
   if (token) {
