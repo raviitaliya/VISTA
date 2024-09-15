@@ -39,9 +39,9 @@ const updateProfile = async (req: RequestWithUser, res: Response): Promise<void>
 const uploadContent = async (req: RequestWithUser, res: Response): Promise<void> => {
     try {
         const userId = req.user?.userId;
-        const { title, description, img } = req.body;
+        const { title, description, img,email,avatar,name } = req.body;
 
-        const upload = new Upload({ userId, title, description, img });
+        const upload = new Upload({ userId, title, description, img,email,avatar,name });
 
         
         await upload.save();

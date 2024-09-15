@@ -35,6 +35,9 @@ const verificationSchema: Schema = new Schema({
 
 export interface IUpload extends Document {
   userId: mongoose.Types.ObjectId;
+  email: string;
+  name: string;
+  avatar?: string;
   title: string;
   description: string;
   img: string[];
@@ -43,6 +46,9 @@ export interface IUpload extends Document {
 
 const uploadSchema: Schema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  email: { type: String },
+  name: { type: String },
+  avatar: { type: String },
   title: { type: String, required: true },
   description: { type: String, required: true },
   img: { type: [String], required: true },

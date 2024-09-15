@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./Layout"; // Add this import
 import Profile from "./pages/Profile";
 import UploadContant from "./pages/UploadContant";
+import DisplayContant from "./Components/DisplayContant";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem('token');
@@ -81,7 +82,15 @@ function App() {
             </ProtectedRoute>
           } 
         />
-        
+
+        <Route 
+          path="/display/:id" 
+          element={
+            <ProtectedRoute>
+              <DisplayContant />
+            </ProtectedRoute>
+          } 
+        />
 
         <Route 
           path="*" 

@@ -15,6 +15,9 @@ export interface ContentItem {
   title: string;
   description: string;
   img: string[];
+  email: string;
+  name: string;
+  avatar: string;
   uploadDate: string;
   __v: number;
 }

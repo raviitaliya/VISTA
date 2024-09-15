@@ -3,6 +3,7 @@ import uploadFiles from "../utils/uploadImg";
 import useUserStore from "../store/store";
 import { toast, ToastContainer } from "react-toastify"; // Update this import
 import "react-toastify/dist/ReactToastify.css"; // Add this import
+import { useNavigate } from "react-router-dom";
 
 const UploadContant: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,8 +11,9 @@ const UploadContant: React.FC = () => {
     description: "",
     images: [] as File[],
   });
+  const navigate = useNavigate();
   const [isUploading, setIsUploading] = useState(false);
-  const { createContent } = useUserStore();
+  const { createContent,user } = useUserStore();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -54,17 +56,22 @@ const UploadContant: React.FC = () => {
 
       const contentData = {
         title: formData.title,
+        email: user?.email,
+        avatar: user?.avatar,
+        name: user?.username,
         description: formData.description,
         img: uploadedImages.map((img) => img.secure_url),
       };
 
       console.log(contentData);
+
       
 
       await createContent(contentData);
 
       setIsUploading(false);
       toast.success("Content uploaded successfully!");
+      navigate("/profile");
 
       setFormData({
         title: "",

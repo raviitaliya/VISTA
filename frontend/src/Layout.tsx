@@ -35,11 +35,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 };
 
 export default Layout;
-function getContent() {
-  throw new Error('Function not implemented.');
-}
-
-function fetchUser() {
-  throw new Error('Function not implemented.');
-}
 

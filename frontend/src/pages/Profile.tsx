@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useUserStore from '../store/store';
 import { useEffect, useState } from 'react';
 import { ContentItem } from '../store/store';
@@ -131,9 +131,11 @@ const Profile = () => {
 
                 {
                     content.length > 0 ? (
-                        <div className="flex flex-wrap justify-center gap-20">
+                        <div  className="flex flex-wrap justify-center gap-20">
                             {content.map((item) => (
+                                <Link to={`/display/${item._id}`} key={item._id} >
                                 <Post key={item._id} img={item.img[0]} name={item.title} />
+                                </Link>
                             ))}
                         </div>
                     ) : (
