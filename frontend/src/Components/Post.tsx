@@ -1,6 +1,13 @@
-import { Heart,Eye } from "@phosphor-icons/react";
+import { Heart, Eye } from "@phosphor-icons/react";
 
-const Post = ({img,name}) => {
+interface PostProps {
+  img: string;
+  name: string;
+  avatar?: string;
+}
+
+const Post: React.FC<PostProps> = ({ img, name, avatar }) => {
+  console.log(avatar);
   return (
     <div className="w-[415px] h-[345px]">
       <div className="flex flex-col gap-2">
@@ -9,7 +16,7 @@ const Post = ({img,name}) => {
         </div>
         <div className="flex justify-between items-center px-1">
           <div className="flex gap-2">
-            <div className="h-6 w-6 rounded-full bg-black"></div>
+            <img className="h-6 w-6 rounded-full bg-black" src={avatar || "/image.png"} alt="" />
             <p>{name}</p>
           </div>
           <div className="flex gap-2 ">

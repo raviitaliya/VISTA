@@ -134,7 +134,7 @@ const Profile = () => {
                         <div  className="flex flex-wrap justify-center gap-20">
                             {content.map((item) => (
                                 <Link to={`/display/${item._id}`} key={item._id} >
-                                <Post key={item._id} img={item.img[0]} name={item.title} />
+                                <Post key={item._id} img={item.img[0]} name={item.title} avatar={item.avatar} />
                                 </Link>
                             ))}
                         </div>

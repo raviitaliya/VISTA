@@ -1,15 +1,24 @@
 import { useParams } from "react-router-dom";
 import useUserStore from "../store/store";
+import { useEffect } from "react";
 
 const DisplayContant = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        fetchUser();
+    }, []);
 
     const { id } = useParams();
 
-    const { contentItems, user } = useUserStore();
+    const { allcontentItems, user,fetchUser } = useUserStore();
 
+
+    console.log(allcontentItems);
     console.log(user);
 
-    const item = contentItems.find((item: { _id: string | undefined; }) => item._id === id);
+ 
+
+    const item = allcontentItems.find((item: { _id: string | undefined; }) => item._id === id);
 
     console.log(item);
 

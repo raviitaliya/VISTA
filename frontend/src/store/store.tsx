@@ -31,6 +31,9 @@ interface UserStore {
   createContent: (contentData: any) => Promise<void>;
   contentItems: ContentItem[]; // New property to store content items
   getContent: () => Promise<void>;
+  getAllContent: () => Promise<void>;
+  allcontentItems: ContentItem[]; // New property to store all content items
+  
 }
 
 const useUserStore = create<UserStore>((set) => ({
@@ -38,6 +41,7 @@ const useUserStore = create<UserStore>((set) => ({
   isLoading: false,
   error: null,
   contentItems: [], // Initialize contentItems
+  allcontentItems: [], // Initialize allcontentItems
   fetchUser: async () => {
     set({ isLoading: true });
     try {
@@ -76,6 +80,15 @@ const useUserStore = create<UserStore>((set) => ({
       const response = await api.get('/content');
       console.log(response);
       set({ contentItems: response.data, isLoading: false, error: null });
+    } catch (error) {
+      set({ isLoading: false, error: 'Failed to fetch content' });
+    }
+  },
+  getAllContent: async () => {
+    set({ isLoading: true });
+    try {
+      const response = await api.get('/allcontent');
+      set({ allcontentItems: response.data, isLoading: false, error: null });
     } catch (error) {
       set({ isLoading: false, error: 'Failed to fetch content' });
     }

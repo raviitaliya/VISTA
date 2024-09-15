@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useUserStore from "../store/store";
 
 function Navbar() {
@@ -9,18 +9,18 @@ function Navbar() {
   return (
     <nav className="flex justify-between items-center w-full h-24">
       <div className="flex items-center h-full px-14 text-base font-medium gap-10 text-black">
-        <a href="#" className="text-">
-          Find talent
-        </a>
-        <a href="#" className="text-">
+        <Link to="/home" className="text-">
+          Home
+        </Link>
+        <Link to="/following" className="text-">
           For designers
-        </a>
-        <a href="#" className="text-">
-          Inspiration
-        </a>
-        <a href="#" className="text-">
-          Learn design
-        </a>
+        </Link>
+        <Link to="/editor" className="text-">
+          Create yours
+        </Link>
+        <Link to="/about" className="text-">
+          about
+        </Link>
       </div>
       <div className="font-['Bodoni_Moda_SC',_serif] font-medium font-optical-sizing-auto text-center absolute left-1/2 transform -translate-x-1/2">
         <h1 className="text-5xl">VISTA</h1>

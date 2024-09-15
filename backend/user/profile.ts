@@ -68,5 +68,18 @@ const getContent = async (req: RequestWithUser, res: Response): Promise<void> =>
     }
 }
 
-export { profile, updateProfile, uploadContent, getContent };
+
+const getAllContent = async (req: RequestWithUser, res: Response): Promise<void> => {
+    try {
+        const uploads = await Upload.find();
+        
+        res.json(uploads);
+    } catch (error) {
+        console.error('Error fetching all content:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+export { profile, updateProfile, uploadContent, getContent,getAllContent };
+
 

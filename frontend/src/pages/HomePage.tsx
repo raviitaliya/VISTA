@@ -1,27 +1,48 @@
-import Post from "../Components/Post"
+import { useEffect, useState } from "react";
+import useUserStore from "../store/store";
+import Post from "../Components/Post";
+import { Link } from "react-router-dom";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 
 const HomePage = () => {
-  return (
-    <div className="h-full w-full">
-      <div className="flex justify-center items-center h-full">
-      <div className=" flex-wrap justify-center  flex gap-10 mt-20">
-          <Post img={"https://images.unsplash.com/photo-1719937206255-cc337bccfc7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8"}/>
-          <Post img={"https://images.unsplash.com/photo-1721934081906-a92cdc010b75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://plus.unsplash.com/premium_photo-1722081393586-e3a0c12535b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
-          <Post img={"https://images.unsplash.com/photo-1721633616323-e0ea74a488e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"}/>
+	const { getAllContent, allcontentItems } = useUserStore();
+	const [searchTerm, setSearchTerm] = useState("");
 
-        </div>
-      </div>
-    </div>
-  )
-}
+	useEffect(() => {
+		getAllContent();
+	}, []);
 
-export default HomePage
+	// Filter content based on search term
+	const filteredContent = allcontentItems.filter((item) =>
+		item.title.toLowerCase().includes(searchTerm.toLowerCase())
+	);
+
+	return (
+		<div className="h-full w-full flex flex-col items-center">
+			<div className="w-3/4 mt-10 relative">
+				<input
+					type="text"
+					placeholder="Search posts..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					className="w-full px-4 py-3 pl-10 border-[1px] rounded-2xl border-black focus:outline-none focus:border-blue-500"
+				/>
+				<MagnifyingGlass
+					className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+					size={20}
+				/>
+			</div>
+			<div className="flex justify-center w-full items-center mt-10 h-full">
+				<div className="flex flex-wrap justify-center gap-10">
+					{filteredContent.map((item) => (
+						<Link to={`/display/${item._id}`} key={item._id}>
+							<Post key={item._id} img={item.img[0]} name={item.title} avatar={item.avatar} />
+						</Link>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default HomePage;
