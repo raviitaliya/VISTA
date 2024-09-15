@@ -7,6 +7,9 @@ const UploadContant: React.FC = () => {
     images: [] as File[],
   });
 
+
+  
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({

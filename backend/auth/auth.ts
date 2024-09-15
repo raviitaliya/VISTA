@@ -3,7 +3,7 @@ import { User, IUser, Verification, IVerification } from "../model/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const JWT_SECRET = process.env.JWT_SECRET as string || "qwknifhweiofhweoifhweoifhweoifw";
 
 const generateOTP = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -102,8 +102,7 @@ const verifyOTP = async (req: Request, res: Response) => {
 
     const token = jwt.sign(
       { userId: user._id, username: user.username },
-      JWT_SECRET,
-      { expiresIn: '1h' }   
+      JWT_SECRET
     );
 
     res.status(200).json({
@@ -188,7 +187,6 @@ const login = async (req: Request, res: Response) => {
     const token = jwt.sign(
       { userId: user._id, username: user.username },
       JWT_SECRET,
-      { expiresIn: '1h' }
     );
 
     // Return user info and token

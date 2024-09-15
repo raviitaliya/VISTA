@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import api from "../api/api";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Login: React.FC = () => {
   const handleCreateAccount = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/signup", formData);
+      const response = await api.post("/signup", formData);
       setVerificationToken(response.data.verificationToken);
       setShowOTP(true);
       setTimer(60);

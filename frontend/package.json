@@ -22,7 +22,8 @@
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.26.0",
     "react-sketch-canvas": "^6.2.0",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

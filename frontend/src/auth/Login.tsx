@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import api from '../api/api';
 
 const Login = () => {
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
@@ -12,7 +13,7 @@ const Login = () => {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/login', {
+            const response = await api.post('/login', {
                 usernameOrEmail,
                 password
             });
@@ -26,9 +27,9 @@ const Login = () => {
             navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
-                toast.error(error.response.data.message || 'internal server error!');
+                toast.error(error.response.data.message || 'Internal server error!');
             } else {
-                toast.error('internal server error!');
+                toast.error('Internal server error!');
             }
             // Clear input fields on error
             setUsernameOrEmail('');
