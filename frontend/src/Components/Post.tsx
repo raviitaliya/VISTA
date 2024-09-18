@@ -17,7 +17,7 @@ const Post: React.FC<PostProps> = ({ img, name, avatar }) => {
         <div className="flex justify-between items-center px-1">
           <div className="flex gap-2">
             <img className="h-6 w-6 rounded-full bg-black" src={avatar || "/image.png"} alt="" />
-            <p>{name}</p>
+            <p className="line-clamp-1">{name}</p>
           </div>
           <div className="flex gap-2 ">
             <div className="flex gap-1 items-center">

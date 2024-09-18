@@ -58,7 +58,7 @@ const UploadContant: React.FC = () => {
         title: formData.title,
         email: user?.email,
         avatar: user?.avatar,
-        name: user?.username,
+        name: user?.name,
         description: formData.description,
         img: uploadedImages.map((img) => img.secure_url),
       };

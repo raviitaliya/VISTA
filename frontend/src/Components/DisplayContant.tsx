@@ -3,24 +3,23 @@ import useUserStore from "../store/store";
 import { useEffect } from "react";
 
 const DisplayContant = () => {
+    const { id } = useParams<{ id: string }>();
+    const { allcontentItems, user, fetchUser,getAllContent } = useUserStore();
+
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchUser();
-    }, []);
-
-    const { id } = useParams();
-
-    const { allcontentItems, user,fetchUser } = useUserStore();
-
+        getAllContent();
+    }, [fetchUser,getAllContent]);
 
     console.log(allcontentItems);
-    console.log(user);
+    // console.log(user);
 
  
 
     const item = allcontentItems.find((item: { _id: string | undefined; }) => item._id === id);
 
-    console.log(item);
+    // console.log(item);
 
     return (
         <div className="flex mt-10 justify-center">
