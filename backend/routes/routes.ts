@@ -1,5 +1,5 @@
 import express from "express"
-import { resendOTP, signup, verifyOTP,login } from '../auth/auth';
+import { resendOTP, signup, verifyOTP,login, adminLogin, adminSignup } from '../auth/auth';
 import {getAllContent, getContent, profile,updateProfile, uploadContent} from "../user/profile";
 import { authenticateToken } from "../auth/authenticateToken";
 
@@ -14,6 +14,8 @@ router.put('/profile', authenticateToken, updateProfile);
 router.post('/upload', authenticateToken, uploadContent);
 router.get('/content', authenticateToken, getContent);
 router.get('/allcontent', authenticateToken, getAllContent);
+router.post('/adminlogin', adminLogin);
+router.post('/adminSignup', adminSignup);
 
 
 
